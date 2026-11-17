@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#05080f">
-  <title>ASCII Christmas Tree</title>
+  <meta name="theme-color" content="#140810">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title> Christmas Tree</title>
   <link rel="stylesheet" href="styles.css">
   <script src="analytics.js" defer></script>
   <script src="christmas_tree.js" defer></script>
@@ -18,7 +19,7 @@
 <body>
   <main>
     <header>
-      <div class="brand"><a id="home-link" class="home-link" href="https://vuicoding.me" target="_top" lang="vi" aria-label="Về Vui Coding"><span aria-hidden="true">←</span> <span><span class="label-full">Về </span></span></a><h1>Noel ASCII</h1></div>
+      <div class="brand"><a id="home-link" class="home-link" href="https://vuicoding.me" target="_top" lang="vi" aria-label="Về Vui Coding"><span aria-hidden="true">←</span> <span><span class="label-full">Trang chủ</span></span></a><div class="title-lockup"><span class="eyebrow">Đêm Giáng Sinh</span><h1></h1></div></div>
       <form id="music-form" class="music-inline" lang="vi" aria-label="Đổi nhạc YouTube" hidden>
         <label class="sr-only" for="youtube-url">Link YouTube hoặc video ID</label>
         <span class="music-input-icon" aria-hidden="true">♫</span>
@@ -27,7 +28,7 @@
         <button id="original-music" type="button" title="Dùng nhạc gốc" aria-label="Dùng nhạc gốc">Gốc</button>
       </form>
       <nav class="page-actions" aria-label="Support and source code">
-        <button id="coffee" type="button" class="action-link coffee-link" aria-label="Mời cà phê" aria-haspopup="dialog" aria-controls="coffee-dialog" lang="vi"><span aria-hidden="true">☕</span><span class="label-full">Mời cà phê</span></button>
+        <button id="coffee" type="button" class="action-link coffee-link" aria-label="Mời cà phê" aria-haspopup="dialog" aria-controls="coffee-dialog" lang="vi"><span aria-hidden="true">☕</span><span class="label-full">đừng nhấn vào đây</span></button>
         
       </nav>
     </header>
@@ -59,15 +60,15 @@
     <form method="dialog"><button class="coffee-close" aria-label="Đóng chia sẻ" autofocus>×</button></form>
     <h2 id="share-title">Gửi một chút Noel 🎄</h2>
     <p class="settings-hint">Bạn bè mở link sẽ thấy cây thông cùng bài nhạc bạn đã chọn.</p>
-    <label for="share-url">Shortlink Vui Coding</label>
+    <label for="share-url"></label>
     <input id="share-url" type="text" readonly>
     <div class="settings-buttons"><button id="copy-share" type="button">Copy link</button><button id="native-share" type="button" hidden>Chia sẻ…</button></div>
     <p id="share-status" class="form-message" role="status"></p>
   </dialog>
   <dialog id="coffee-dialog" class="coffee-dialog" aria-labelledby="coffee-title" aria-describedby="coffee-message" lang="vi">
     <form method="dialog"><button class="coffee-close" aria-label="Đóng lời mời cà phê" autofocus>×</button></form>
-    <h2 id="coffee-title">Tiếp cà phê cho Vui ☕</h2>
-    <p id="coffee-message">Cây thông chạy bằng code, còn mình chạy bằng cà phê. Mời một ly để mùa Noel bớt… lỗi nhé! 🎄</p>
+    <h2 id="coffee-title">Chúc em giáng sinh an lành </h2>
+    <p id="coffee-message"></p>
   </dialog>
 </body>
 </html>

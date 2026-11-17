@@ -356,7 +356,7 @@
         ink.fillStyle = `rgb(${Math.round(scene.colors[k] * 255)},${Math.round(scene.colors[k + 1] * 255)},${Math.round(scene.colors[k + 2] * 255)})`;
         ink.fillText(String.fromCharCode(ch), (i % COLS + .5) * CW, (Math.floor(i / COLS) + .5) * CH);
       }
-      ctx.fillStyle = "#05080f"; ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = "#140c12"; ctx.fillRect(0, 0, w, h);
       ctx.drawImage(layer, 0, 0);
       ctx.save();
       ctx.globalCompositeOperation = "lighter";

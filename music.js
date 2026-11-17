@@ -84,11 +84,11 @@
   }
   function createPlayer() {
     if (destroyed || player || !window.YT?.Player) return;
-    player = new window.YT.Player("youtube-player", {
-      width: "100%", height: "200", host: "https://www.youtube-nocookie.com",
+      player = new window.YT.Player("youtube-player", {
+      width: "100%", height: "200",
       videoId,
-      playerVars: { autoplay: active && !tree.paused && !document.hidden ? 1 : 0, playsinline: 1, controls: 1, rel: 0,
-        ...(/^https?:$/.test(location.protocol) ? { origin: location.origin } : {}) },
+      playerVars: { autoplay: active && !tree.paused && !document.hidden ? 1 : 0, playsinline: 1, controls: 0, rel: 0, modestbranding: 1,
+        ...(/^https?:$/.test(location.protocol) ? { origin: location.origin, widget_referrer: location.href } : {}) },
       events: {
         onReady() {
           if (destroyed) return;
@@ -110,7 +110,11 @@
           // Keep the spinner until PLAYING, unless playback was explicitly stopped.
           else if (event.data === 1 || tree.paused || document.hidden) setLoading(false);
           if (!active && playing) { player.pauseVideo(); return; }
-          if (playing) { status.textContent = ""; soundHint.textContent = ""; }
+          if (playing) {
+            const title = player.getVideoData?.().title?.trim();
+            status.textContent = title ? `Đang phát · ${title}` : "Đang phát nhạc YouTube";
+            soundHint.textContent = "";
+          }
           else stopBeat();
           if (event.data === 0 && active && !tree.paused && !document.hidden) {
             setLoading(true);
@@ -221,7 +225,7 @@
     if (!active) result.searchParams.set("music", "original");
     return result.href;
   }
-  byId("share").addEventListener("click", () => {
+  byId("share")?.addEventListener("click", () => {
     shareUrl.value = getShareUrl(); shareStatus.textContent = ""; shareDialog.showModal();
   });
   byId("copy-share").addEventListener("click", async () => {
@@ -253,6 +257,8 @@
     destroyed = true; cancelAnimationFrame(frame); player?.destroy?.();
   });
   updatePanel();
-  if (active) { tree.setMuted(true); loadApi(); }
+  if (!/^https?:$/.test(location.protocol)) {
+    status.textContent = "Mở trang bằng http://localhost để YouTube nhận link. Mở file trực tiếp thì trình duyệt chặn kết nối.";
+  } else if (active) { tree.setMuted(true); loadApi(); }
   frame = requestAnimationFrame(beat);
 })();

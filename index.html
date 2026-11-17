@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#05080f">
+  <title>ASCII Christmas Tree</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="analytics.js" defer></script>
+  <script src="christmas_tree.js" defer></script>
+  <script src="music-utils.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="music.js" defer></script>
+  <script src="vendor/realtime.js" defer></script>
+  <script src="presence.js" defer></script>
+  <script src="cursor.js" defer></script>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="brand"><a id="home-link" class="home-link" href="https://vuicoding.me" target="_top" lang="vi" aria-label="Về Vui Coding"><span aria-hidden="true">←</span> <span><span class="label-full">Về </span></span></a><h1>Noel ASCII</h1></div>
+      <form id="music-form" class="music-inline" lang="vi" aria-label="Đổi nhạc YouTube" hidden>
+        <label class="sr-only" for="youtube-url">Link YouTube hoặc video ID</label>
+        <span class="music-input-icon" aria-hidden="true">♫</span>
+        <input id="youtube-url" type="text" inputmode="url" autocomplete="off" spellcheck="false" required placeholder="Dán link YouTube để đổi nhạc…" aria-describedby="music-error">
+        <button type="submit" aria-label="Phát nhạc này">Phát</button>
+        <button id="original-music" type="button" title="Dùng nhạc gốc" aria-label="Dùng nhạc gốc">Gốc</button>
+      </form>
+      <nav class="page-actions" aria-label="Support and source code">
+        <button id="coffee" type="button" class="action-link coffee-link" aria-label="Mời cà phê" aria-haspopup="dialog" aria-controls="coffee-dialog" lang="vi"><span aria-hidden="true">☕</span><span class="label-full">Mời cà phê</span></button>
+        
+      </nav>
+    </header>
+    <div class="online-bar"><span class="online-dot" aria-hidden="true"></span><span id="online-count" role="status" aria-live="polite" title="Số trình duyệt đang mở trang Noel; nhiều tab chỉ tính một lần">Đang kết nối…</span></div>
+    <div class="scene">
+      <div class="tree-stage"><canvas id="tree" width="792" height="1036" role="img" aria-label="An animated, rotating 3D ASCII Christmas tree that grows branches, ornaments, twinkling lights, and presents in falling snow.">Your browser needs Canvas support to display this animation.</canvas></div>
+      <aside id="music-panel" class="music-panel" aria-label="Hiệu ứng nhạc" hidden>
+        <canvas id="music-visualizer" width="560" height="560" aria-hidden="true"></canvas>
+        <button id="music-orb" type="button" aria-label="Đổi nhạc" aria-controls="music-form" aria-expanded="false"><span class="music-orb-title" aria-hidden="true">MUSIC</span><span class="music-orb-caption">Đổi nhạc</span></button>
+        <div class="youtube-audio" aria-hidden="true"><div id="youtube-player"></div></div>
+      </aside>
+    </div>
+    <section class="controls" aria-label="Animation controls">
+      <div class="timeline"><label class="sr-only" for="seek">Timeline</label><input id="seek" type="range" min="0" max="20" step="0.01" value="0"><output id="time" for="seek">0.0 / 20.0s</output><label class="loop"><input id="loop" type="checkbox" checked> Loop</label></div>
+      <div class="buttons">
+        <button id="play" type="button">Pause</button>
+        <button id="restart" type="button">Restart</button>
+        <button id="sound" type="button" aria-pressed="true">Sound on</button>
+        <button id="save" type="button">Save PNG</button>
+      </div>
+      <p class="hint">Space pause · R restart · ← / → seek · S screenshot · M sound</p>
+      <p id="sound-hint" class="hint" role="status"></p>
+      <p id="music-error" class="form-message" role="status"></p>
+      <p id="music-status" role="status"></p>
+      <p id="status" role="status"></p>
+    </section>
+  </main>
+  <dialog id="share-dialog" class="settings-dialog" aria-labelledby="share-title" lang="vi">
+    <form method="dialog"><button class="coffee-close" aria-label="Đóng chia sẻ" autofocus>×</button></form>
+    <h2 id="share-title">Gửi một chút Noel 🎄</h2>
+    <p class="settings-hint">Bạn bè mở link sẽ thấy cây thông cùng bài nhạc bạn đã chọn.</p>
+    <label for="share-url">Shortlink Vui Coding</label>
+    <input id="share-url" type="text" readonly>
+    <div class="settings-buttons"><button id="copy-share" type="button">Copy link</button><button id="native-share" type="button" hidden>Chia sẻ…</button></div>
+    <p id="share-status" class="form-message" role="status"></p>
+  </dialog>
+  <dialog id="coffee-dialog" class="coffee-dialog" aria-labelledby="coffee-title" aria-describedby="coffee-message" lang="vi">
+    <form method="dialog"><button class="coffee-close" aria-label="Đóng lời mời cà phê" autofocus>×</button></form>
+    <h2 id="coffee-title">Tiếp cà phê cho Vui ☕</h2>
+    <p id="coffee-message">Cây thông chạy bằng code, còn mình chạy bằng cà phê. Mời một ly để mùa Noel bớt… lỗi nhé! 🎄</p>
+  </dialog>
+</body>
+</html>
